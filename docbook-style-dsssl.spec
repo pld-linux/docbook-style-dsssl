@@ -1,18 +1,18 @@
 Summary:	Modular DocBook Stylesheets
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
 Name:		docbook-style-dsssl
-%define		ver 1
-%define		subver 61
 ## please don't change version string
 ## I changed it because I added patch that changes original shylesheets behaviour.
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
+%define		ver 1
+%define		subver 61
 Version:	%{ver}.%{subver}pl1
-Release:	2
-Copyright:	(C) 1997, 1998 Norman Walsh (Free)
+Release:	3
+License:	(C) 1997, 1998 Norman Walsh (Free)
+Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
 Group(pl):	Aplikacje/Publikowanie/SGML
-Vendor:		Norman Walsh http://nwalsh.com/
 Source0:	http://nwalsh.com/docbook/dsssl/db%{ver}%{subver}.zip
 Source1:	docbook-dsssl-online.dsl
 Source2:	http://nwalsh.com/docbook/dsssl/db%{ver}%{subver}d.zip
@@ -27,7 +27,7 @@ BuildArch:	noarch
 AutoReqProv:    0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	stylesheets
-BuildRoot:	docbook-dsssl
+Obsoletes:	docbook-dsssl
 
 %description
 DSSSL is a stylesheet language for both print and online rendering.
