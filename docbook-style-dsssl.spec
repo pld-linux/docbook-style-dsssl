@@ -22,7 +22,7 @@ Source3:	docbook-dsssl-cygnus.tar.gz
 Patch0:		docbook-dsssl-cygnus-FPI.patch
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	sgml-common >= 0.5
-Requires:	jade
+Requires:	openjade
 BuildRequires:	perl
 BuildArch:	noarch
 AutoReqProv:	0
