@@ -9,7 +9,7 @@ Name:		docbook-style-dsssl
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
 Version:	1.76
-Release:	1
+Release:	2
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -49,7 +49,6 @@ jadetex lub RTF).
 Estes stylesheets DSSSL permitem converter qualquer documento DocBook
 para outro formato imprimível (por exemplo, RTF ou PostScript) ou
 on-line (por exemplo, HTML). Eles são altamente personalizáveis.
-
 
 %prep
 %setup -q -n docbook-dsssl-%{version} -b 2 -a 3
@@ -112,6 +111,7 @@ fi
 %defattr(644,root,root,755)
 %doc doc {ChangeLog,WhatsNew,BUGS,TODO,README}.gz
 %attr(755,root,root) %{_bindir}/*
+%dir %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/VERSION
 #%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/bin
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
