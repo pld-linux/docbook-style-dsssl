@@ -6,9 +6,9 @@ Name:		docbook-style-dsssl
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
 %define		ver 1
-%define		subver 61
-Version:	%{ver}.%{subver}pl1
-Release:	3
+%define		subver 65
+Version:	%{ver}.%{subver}
+Release:	1
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
