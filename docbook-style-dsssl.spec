@@ -8,8 +8,8 @@ Name:		docbook-style-dsssl
 ## I changed it because I added patch that changes original shylesheets behaviour.
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
-Version:	1.74b
-Release:	3
+Version:	1.76
+Release:	1
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
