@@ -7,7 +7,7 @@ Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.76
-Release:	5
+Release:	7
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -116,9 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
 
 %postun
-/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
-if [ "$1" = 0 ]; then
-rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
+if [ "$1" = "0" ]; then
+	/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
+	rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
 fi
 
 %files
