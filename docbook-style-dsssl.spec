@@ -97,7 +97,9 @@ ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
 
 %postun
 /usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
+if [ "$1" = 0 ]; then
 rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
+fi
 
 %files
 %defattr(644,root,root,755)
