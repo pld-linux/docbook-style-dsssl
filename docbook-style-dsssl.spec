@@ -7,17 +7,13 @@ Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.76
-Release:	7
+Release:	8
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
 Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
-# Part of cygnus styleshets
-# http:		//sourceware.cygnus.com/docbook-tools/
-Source3:	docbook-dsssl-cygnus.tar.gz
-Patch0:		docbook-dsssl-cygnus-FPI.patch
 Patch1:		%{name}-articleinfo.patch
 Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
@@ -62,68 +58,45 @@ on-line (por exemplo, HTML). Eles sЦo altamente personalizАveis.
 друку (наприклад, RTF чи PostScript).
 
 %prep
-%setup -q -n docbook-dsssl-%{version} -a 2 -a 3
-%patch0 -p1
+%setup -q -n docbook-dsssl-%{version} -a 2 
 %patch1 -p1
 %patch2 -p1
 
-rmdir doc docsrc
-mv -f docbook-dsssl-%{docversion}/{doc,docsrc} .
+rm -rf doc docsrc
+mv -f  docbook-dsssl-%{docversion}/doc .
+rm -rf docbook-dsssl-%{docversion}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version} \
 	$RPM_BUILD_ROOT%{_bindir}
 
-#cat cygnus/*.cat | sed 's#stylesheets#contrib/html#g' \
-#	> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
-cat catalog |grep -v OVERRIDE |grep -v SGMLDECL \
-	>> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
-rm -f cygnus/*.cat
-rm -f catalog
-
 cp -a * $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
-rm -f $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/{html,print}/catalog
+# docs are in standard place
+rm -rf $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/doc
 
 install %{SOURCE1} \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
-install cygnus/*.dsl \
-	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html
 
-
-for script in cygnus/*.sh; do
-	name=`basename $script .sh`
-	echo >$RPM_BUILD_ROOT%{_bindir}/$name
-	echo "DB_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html/cygnus-both.dsl" \
-		>>$RPM_BUILD_ROOT%{_bindir}/$name
-	echo "HTML_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/frames/docbook.css" \
-		>>$RPM_BUILD_ROOT%{_bindir}/$name
-	echo "ADMON_GRAPHICS=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/images/*.gif" \
-		>>$RPM_BUILD_ROOT%{_bindir}/$name
-	cat $script |grep -v "^DB_STYLESHEET=" |grep -v "^HTML_STYLESHEET=" \
-		|grep -v "^ADMON_GRAPHICS=" >>$RPM_BUILD_ROOT%{_bindir}/$name
-done
-
-
-perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/bin\/bin\/perl/g' \
+perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/perl/g' \
 	bin/collateindex.pl > $RPM_BUILD_ROOT%{_bindir}/collateindex
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
+/usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets-%{version}-%{release}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
 ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
 
 %postun
-if [ "$1" = "0" ]; then
-	/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
+/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}-%{release}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
+if [ "$1" = 0 ]; then
 	rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
 fi
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog WhatsNew BUGS TODO README
+%doc doc ChangeLog WhatsNew BUGS TODO README
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/VERSION
@@ -131,7 +104,6 @@ fi
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/common
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/cygnus
 #%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/doc
 #%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/docsrc
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/dtds
