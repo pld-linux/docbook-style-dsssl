@@ -19,7 +19,7 @@ Source2:	http://dl.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.g
 Patch1:		%{name}-articleinfo.patch
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
-BuildRequires:	perl
+BuildRequires:	perl-base
 Requires(post,postun):	sgml-common >= 0.5
 AutoReqProv:	no
 Obsoletes:	docbook-dsssl
