@@ -13,10 +13,6 @@ Release:	3
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
-Group(de):	Applikationen/Publizieren/SGML
-Group(es):	Aplicaciones/Editoración/SGML
-Group(pl):	Aplikacje/Publikowanie/SGML
-Group(pt_BR):	Aplicações/Editoração/SGML
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
 Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
