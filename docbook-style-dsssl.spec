@@ -49,8 +49,8 @@ rmdir docbook
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version} \
+	$RPM_BUILD_ROOT%{_bindir}
 
 #cat cygnus/*.cat | sed 's#stylesheets#contrib/html#g' \
 #	> $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
@@ -62,18 +62,23 @@ rm -f catalog
 cp -a * $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
 rm -f $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/{html,print}/catalog
 
-install %{SOURCE1}   $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
-install cygnus/*.dsl $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html
+install %{SOURCE1} \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
+install cygnus/*.dsl \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html
 
 
 for script in cygnus/*.sh; do
- name=`basename $script .sh`
- echo >$RPM_BUILD_ROOT%{_bindir}/$name
- echo "DB_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html/cygnus-both.dsl" >>$RPM_BUILD_ROOT%{_bindir}/$name
- echo "HTML_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/frames/docbook.css" >>$RPM_BUILD_ROOT%{_bindir}/$name
- echo "ADMON_GRAPHICS=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/images/*.gif" >>$RPM_BUILD_ROOT%{_bindir}/$name
- cat $script |grep -v "^DB_STYLESHEET=" |grep -v "^HTML_STYLESHEET=" |grep -v "^ADMON_GRAPHICS=" \
-	>>$RPM_BUILD_ROOT%{_bindir}/$name
+	name=`basename $script .sh`
+	echo >$RPM_BUILD_ROOT%{_bindir}/$name
+	echo "DB_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib/html/cygnus-both.dsl" \
+		>>$RPM_BUILD_ROOT%{_bindir}/$name
+	echo "HTML_STYLESHEET=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/frames/docbook.css" \
+		>>$RPM_BUILD_ROOT%{_bindir}/$name
+	echo "ADMON_GRAPHICS=%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/images/*.gif" \
+		>>$RPM_BUILD_ROOT%{_bindir}/$name
+	cat $script |grep -v "^DB_STYLESHEET=" |grep -v "^HTML_STYLESHEET=" \
+		|grep -v "^ADMON_GRAPHICS=" >>$RPM_BUILD_ROOT%{_bindir}/$name
 done
 
 
@@ -92,7 +97,6 @@ ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
 %postun
 /usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
 rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
-
 
 %files
 %defattr(644,root,root,755)
