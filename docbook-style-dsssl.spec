@@ -5,17 +5,15 @@ Name:		docbook-style-dsssl
 ## I changed it because I added patch that changes original shylesheets behaviour.
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
-%define		ver 1
-%define		subver 65
-Version:	%{ver}.%{subver}
+Version:	1.73
 Release:	1
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
 Group(pl):	Aplikacje/Publikowanie/SGML
-Source0:	http://nwalsh.com/docbook/dsssl/db%{ver}%{subver}.zip
+Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
-Source2:	http://nwalsh.com/docbook/dsssl/db%{ver}%{subver}d.zip
+Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{version}.tar.gz
 # Part of cygnus styleshets
 # http:		//sourceware.cygnus.com/docbook-tools/
 Source3:	docbook-dsssl-cygnus.tar.gz
@@ -41,12 +39,7 @@ on-line (wykorzystuj±c HTML) lub na drukowany dokument (wykorzystuj±c
 jadetex lub RTF).
 
 %prep
-%setup -q -c -T
-unzip -qa %{SOURCE0}
-unzip -qa %{SOURCE2}
-mv docbook/* .
-rmdir docbook
-%setup -q -c -T -D -a 3
+%setup -q -n docbook-dsssl-%{version} -b 2 -a 3
 %patch0 -p1
 
 %install
@@ -104,7 +97,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc test {ChangeLog,WhatsNew,BUGS,TODO,README}.gz
+%doc doc {ChangeLog,WhatsNew,BUGS,TODO,README}.gz
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/VERSION
 #%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/bin
@@ -121,4 +114,3 @@ fi
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/lib
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/olink
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/print
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/test
