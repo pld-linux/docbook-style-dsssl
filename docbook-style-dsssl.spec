@@ -3,13 +3,11 @@ Summary:	Modular DocBook Stylesheets
 Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
 Summary(pt_BR):	"stylesheets" modulares para o docbook, de Norman Walsh
+Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
+Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
-## please don't change version string
-## I changed it because I added patch that changes original shylesheets behaviour.
-## according to licence, modified packages should be distibuted
-## under another name and with another version string /klakier
 Version:	1.76
-Release:	3
+Release:	4
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -20,6 +18,8 @@ Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{docversi
 # http:		//sourceware.cygnus.com/docbook-tools/
 Source3:	docbook-dsssl-cygnus.tar.gz
 Patch0:		docbook-dsssl-cygnus-FPI.patch
+Patch1:		%{name}-articleinfo.patch
+Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	sgml-common >= 0.5
 Requires:	openjade
@@ -50,9 +50,21 @@ Estes stylesheets DSSSL permitem converter qualquer documento DocBook
 para outro formato imprimМvel (por exemplo, RTF ou PostScript) ou
 on-line (por exemplo, HTML). Eles sЦo altamente personalizАveis.
 
+%description -l ru
+Эти стилевые шаблоны DSSSL позволяют конвертировать любой DocBook
+документ в другой онлайновый формат (например, HTML) или формат для
+печати (например, RTF или PostScript).
+
+%description -l uk
+Ц╕ стильов╕ шаблони DSSSL дозволяють конвертувати будь-який DocBook
+документ в ╕нший онлайновий формат (наприклад, HTML) чи формат для
+друку (наприклад, RTF чи PostScript).
+
 %prep
 %setup -q -n docbook-dsssl-%{version} -a 2 -a 3
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 rmdir doc docsrc
 mv -f docbook-dsssl-%{docversion}/{doc,docsrc} .
