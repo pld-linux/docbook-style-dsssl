@@ -11,16 +11,15 @@ Release:	2
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
-Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
-Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
+Source2:	http://dl.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
 Patch1:		%{name}-articleinfo.patch
 Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
 BuildRequires:	perl
-Requires(post):	sgml-common >= 0.5
-Requires(postun):sgml-common
+Requires(post,postun):	sgml-common >= 0.5
 BuildArch:	noarch
 AutoReqProv:	0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
