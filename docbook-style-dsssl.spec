@@ -51,8 +51,11 @@ para outro formato imprimível (por exemplo, RTF ou PostScript) ou
 on-line (por exemplo, HTML). Eles são altamente personalizáveis.
 
 %prep
-%setup -q -n docbook-dsssl-%{version} -b 2 -a 3
+%setup -q -n docbook-dsssl-%{version} -a 2 -a 3
 %patch0 -p1
+
+rmdir doc docsrc
+mv -f docbook-dsssl-%{docversion}/{doc,docsrc} .
 
 %install
 rm -rf $RPM_BUILD_ROOT
