@@ -58,7 +58,7 @@ on-line (por exemplo, HTML). Eles são altamente personalizáveis.
 ÄÒÕËÕ (ÎÁÐÒÉËÌÁÄ, RTF ÞÉ PostScript).
 
 %prep
-%setup -q -n docbook-dsssl-%{version} -a 2 
+%setup -q -n docbook-dsssl-%{version} -a 2
 %patch1 -p1
 
 rm -rf doc docsrc
@@ -79,7 +79,7 @@ install %{SOURCE1} \
 
 perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/perl/g' \
 	bin/collateindex.pl > $RPM_BUILD_ROOT%{_bindir}/collateindex
-	
+
 cp bin/ChangeLog bin-ChangeLog
 
 # shutup check-files
