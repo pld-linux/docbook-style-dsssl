@@ -22,11 +22,12 @@ Source3:	docbook-dsssl-cygnus.tar.gz
 Patch0:		docbook-dsssl-cygnus-FPI.patch
 URL:		http://nwalsh.com/docbook/dsssl/index.html
 Requires:	sgml-common >= 0.5
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	perl
 BuildArch:	noarch
-Obsoletes:	stylesheets
 AutoReqProv:    0
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	stylesheets
+BuildRoot:	docbook-dsssl
 
 %description
 DSSSL is a stylesheet language for both print and online rendering.
