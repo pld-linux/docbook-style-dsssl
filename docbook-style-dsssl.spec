@@ -21,11 +21,11 @@ URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
 BuildRequires:	perl
 Requires(post,postun):	sgml-common >= 0.5
-BuildArch:	noarch
-AutoReqProv:	0
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	stylesheets
+AutoReqProv:	no
 Obsoletes:	docbook-dsssl
+Obsoletes:	stylesheets
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 DSSSL is a stylesheet language for both print and online rendering.
