@@ -7,7 +7,7 @@ Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.76
-Release:	4
+Release:	5
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -21,9 +21,10 @@ Patch0:		docbook-dsssl-cygnus-FPI.patch
 Patch1:		%{name}-articleinfo.patch
 Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
-Requires:	sgml-common >= 0.5
 Requires:	openjade
 BuildRequires:	perl
+Requires(post):	sgml-common >= 0.5
+Requires(postun):sgml-common
 BuildArch:	noarch
 AutoReqProv:	0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -107,8 +108,6 @@ done
 perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/bin\/bin\/perl/g' \
 	bin/collateindex.pl > $RPM_BUILD_ROOT%{_bindir}/collateindex
 
-gzip -9nf ChangeLog WhatsNew BUGS TODO README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -124,7 +123,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc {ChangeLog,WhatsNew,BUGS,TODO,README}.gz
+%doc ChangeLog WhatsNew BUGS TODO README
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
 %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/VERSION
