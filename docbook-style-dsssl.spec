@@ -1,3 +1,4 @@
+%define		docversion	1.74
 Summary:	Modular DocBook Stylesheets
 Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
@@ -7,8 +8,8 @@ Name:		docbook-style-dsssl
 ## I changed it because I added patch that changes original shylesheets behaviour.
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
-Version:	1.73
-Release:	4
+Version:	1.74b
+Release:	3
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -18,7 +19,7 @@ Group(pl):	Aplikacje/Publikowanie/SGML
 Group(pt_BR):	Aplicações/Editoração/SGML
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
-Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{version}.tar.gz
+Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
 # Part of cygnus styleshets
 # http:		//sourceware.cygnus.com/docbook-tools/
 Source3:	docbook-dsssl-cygnus.tar.gz
