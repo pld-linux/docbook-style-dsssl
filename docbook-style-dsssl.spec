@@ -84,7 +84,7 @@ cp -f bin/ChangeLog bin-ChangeLog
 rm -f $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/BUGS \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/ChangeLog \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/README \
-	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/TODO \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/RELEASE-NOTES* \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/WhatsNew \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/ChangeLog \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/collateindex.pl*
