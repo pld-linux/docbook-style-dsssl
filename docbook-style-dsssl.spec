@@ -7,7 +7,7 @@ Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.77
-Release:	1
+Release:	2
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -19,7 +19,6 @@ Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
 BuildRequires:	perl
-BuildRequires:	sgml-common >= 0.5-9
 Requires(post):	sgml-common >= 0.5
 Requires(postun):sgml-common
 BuildArch:	noarch
@@ -92,14 +91,6 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/BUGS \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/WhatsNew \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/ChangeLog \
 	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/collateindex.pl
-
-# fix PublicId of ISO entity sets
-TMPFILE=`mktemp $(pwd)/tmpXXXXXX` || exit 1
-for ent in `find $RPM_BUILD_ROOT -type f` ; do
-	cp $ent $TMPFILE
-	sgml-iso-ent-fix < $TMPFILE > $ent
-done
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
