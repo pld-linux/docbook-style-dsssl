@@ -120,12 +120,12 @@ fi
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/sgml/docbook/dsssl-stylesheets
 %{_datadir}/sgml/docbook/dsssl-stylesheets/VERSION
-#%{_datadir}/sgml/docbook/dsssl-stylesheets/bin
+#%%{_datadir}/sgml/docbook/dsssl-stylesheets/bin
 %{_datadir}/sgml/docbook/dsssl-stylesheets/catalog
 %{_datadir}/sgml/docbook/dsssl-stylesheets/common
 %{_datadir}/sgml/docbook/dsssl-stylesheets/contrib
-#%{_datadir}/sgml/docbook/dsssl-stylesheets/doc
-#%{_datadir}/sgml/docbook/dsssl-stylesheets/docsrc
+#%%{_datadir}/sgml/docbook/dsssl-stylesheets/doc
+#%%{_datadir}/sgml/docbook/dsssl-stylesheets/docsrc
 %{_datadir}/sgml/docbook/dsssl-stylesheets/dtds
 %{_datadir}/sgml/docbook/dsssl-stylesheets/frames
 %{_datadir}/sgml/docbook/dsssl-stylesheets/html
