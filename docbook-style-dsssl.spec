@@ -8,7 +8,7 @@ Name:		docbook-style-dsssl
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
 Version:	%{ver}.%{subver}pl1
-Release:	1
+Release:	2
 Copyright:	(C) 1997, 1998 Norman Walsh (Free)
 Group:		Applications/Publishing/SGML
 Group(pl):	Aplikacje/Publikowanie/SGML
