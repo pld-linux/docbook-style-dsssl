@@ -18,7 +18,7 @@ Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{version}
 # http:		//sourceware.cygnus.com/docbook-tools/
 Source3:	docbook-dsssl-cygnus.tar.gz
 Patch0:		docbook-dsssl-cygnus-FPI.patch
-URL:		http://nwalsh.com/docbook/dsssl/index.html
+URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	sgml-common >= 0.5
 Requires:	jade
 BuildRequires:	perl
