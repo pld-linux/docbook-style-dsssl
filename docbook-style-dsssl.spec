@@ -1,16 +1,21 @@
 Summary:	Modular DocBook Stylesheets
+Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
+Summary(pt_BR):	"stylesheets" modulares para o docbook, de Norman Walsh
 Name:		docbook-style-dsssl
 ## please don't change version string
 ## I changed it because I added patch that changes original shylesheets behaviour.
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
 Version:	1.73
-Release:	1
+Release:	4
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
+Group(de):	Applikationen/Publizieren/SGML
+Group(es):	Aplicaciones/Editoración/SGML
 Group(pl):	Aplikacje/Publikowanie/SGML
+Group(pt_BR):	Aplicações/Editoração/SGML
 Source0:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
 Source2:	http://prdownloads.sourceforge.net/docbook/docbook-dsssl-doc-%{version}.tar.gz
@@ -23,7 +28,7 @@ Requires:	sgml-common >= 0.5
 Requires:	jade
 BuildRequires:	perl
 BuildArch:	noarch
-AutoReqProv:    0
+AutoReqProv:	0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	stylesheets
 Obsoletes:	docbook-dsssl
@@ -32,11 +37,22 @@ Obsoletes:	docbook-dsssl
 DSSSL is a stylesheet language for both print and online rendering.
 There is DSSSL stylesheets for DocBook DTD.
 
+%description -l es
+Plantillas de estilo DSSSL permiten convertir cualquier documento
+Docbook en otro formato impreso (por ejemplo, RTF o PostScript) o en
+línea (por ejemplo, HTML). Éstos son altamente personalizables.
+
 %description -l pl
 docbook-dsssl jest zbiorem arkuszy stylistycznych pozwalaj±cych
 przekszta³ciæ dokument napisany w DocBook DTD 3.0. na prezentacjê
 on-line (wykorzystuj±c HTML) lub na drukowany dokument (wykorzystuj±c
 jadetex lub RTF).
+
+%description -l pt_BR
+Estes stylesheets DSSSL permitem converter qualquer documento DocBook
+para outro formato imprimível (por exemplo, RTF ou PostScript) ou
+on-line (por exemplo, HTML). Eles são altamente personalizáveis.
+
 
 %prep
 %setup -q -n docbook-dsssl-%{version} -b 2 -a 3
@@ -77,7 +93,7 @@ for script in cygnus/*.sh; do
 done
 
 
-perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/bin\/perl/g' \
+perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/bin\/bin\/perl/g' \
 	bin/collateindex.pl > $RPM_BUILD_ROOT%{_bindir}/collateindex
 
 gzip -9nf ChangeLog WhatsNew BUGS TODO README
