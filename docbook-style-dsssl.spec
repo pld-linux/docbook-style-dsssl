@@ -6,8 +6,8 @@ Summary(pt_BR):	"stylesheets" modulares para o docbook, de Norman Walsh
 Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
-Version:	1.77
-Release:	2
+Version:	1.78
+Release:	1
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -15,7 +15,6 @@ Source0:	http://dl.sourceforge.net/docbook/docbook-dsssl-%{version}.tar.gz
 Source1:	docbook-dsssl-online.dsl
 Source2:	http://dl.sourceforge.net/docbook/docbook-dsssl-doc-%{docversion}.tar.gz
 Patch1:		%{name}-articleinfo.patch
-Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
 BuildRequires:	perl
@@ -59,7 +58,6 @@ on-line (por exemplo, HTML). Eles sЦo altamente personalizАveis.
 %prep
 %setup -q -n docbook-dsssl-%{version} -a 2 
 %patch1 -p1
-%patch2 -p1
 
 rm -rf doc docsrc
 mv -f  docbook-dsssl-%{docversion}/doc .
