@@ -1,4 +1,4 @@
-%define		docversion	1.74
+%define		docversion	1.75
 Summary:	Modular DocBook Stylesheets
 Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
@@ -9,7 +9,7 @@ Name:		docbook-style-dsssl
 ## according to licence, modified packages should be distibuted
 ## under another name and with another version string /klakier
 Version:	1.76
-Release:	2
+Release:	3
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
