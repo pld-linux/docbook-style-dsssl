@@ -1,4 +1,4 @@
-%define		docversion	1.75
+%define		docversion	1.77
 Summary:	Modular DocBook Stylesheets
 Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
 Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
@@ -6,8 +6,8 @@ Summary(pt_BR):	"stylesheets" modulares para o docbook, de Norman Walsh
 Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
 Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
 Name:		docbook-style-dsssl
-Version:	1.76
-Release:	8
+Version:	1.77
+Release:	1
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
@@ -19,6 +19,7 @@ Patch2:		%{name}-seealso.spec
 URL:		http://docbook.sourceforge.net/projects/dsssl/
 Requires:	openjade
 BuildRequires:	perl
+BuildRequires:	sgml-common >= 0.5-9
 Requires(post):	sgml-common >= 0.5
 Requires(postun):sgml-common
 BuildArch:	noarch
@@ -68,48 +69,77 @@ rm -rf docbook-dsssl-%{docversion}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version} \
+install -d $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets \
 	$RPM_BUILD_ROOT%{_bindir}
 
-cp -a * $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
+cp -a * $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets
 # docs are in standard place
-rm -rf $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/doc
+rm -rf $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/doc
 
 install %{SOURCE1} \
-	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/contrib
 
 perl -pe 's/^#.+?- Perl -.+?$/#\!\/usr\/bin\/perl/g' \
 	bin/collateindex.pl > $RPM_BUILD_ROOT%{_bindir}/collateindex
+	
+cp bin/ChangeLog bin-ChangeLog
+
+# shutup check-files
+rm -f $RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/BUGS \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/ChangeLog \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/README \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/TODO \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/WhatsNew \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/ChangeLog \
+	$RPM_BUILD_ROOT%{_datadir}/sgml/docbook/dsssl-stylesheets/bin/collateindex.pl
+
+# fix PublicId of ISO entity sets
+TMPFILE=`mktemp $(pwd)/tmpXXXXXX` || exit 1
+for ent in `find $RPM_BUILD_ROOT -type f` ; do
+	cp $ent $TMPFILE
+	sgml-iso-ent-fix < $TMPFILE > $ent
+done
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%triggerpostun -- %{name} < 1.77-1
+if ! grep -q /etc/sgml/dsssl-stylesheets.cat /etc/sgml/catalog ; then
+	/usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets.cat %{_datadir}/sgml/docbook/dsssl-stylesheets/catalog > /dev/null
+fi
+
+%pre
+if [ -L %{_datadir}/sgml/docbook/dsssl-stylesheets ] ; then
+	rm -rf %{_datadir}/sgml/docbook/dsssl-stylesheets
+fi
+
 %post
-/usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets-%{version}-%{release}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
-ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
+if ! grep -q /etc/sgml/dsssl-stylesheets.cat /etc/sgml/catalog ; then
+	/usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets.cat %{_datadir}/sgml/docbook/dsssl-stylesheets/catalog > /dev/null
+fi
 
 %postun
-/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}-%{release}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
 if [ "$1" = 0 ]; then
-	rm -f %{_datadir}/sgml/docbook/dsssl-stylesheets
+	/usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets.cat %{_datadir}/sgml/docbook/dsssl-stylesheets/catalog > /dev/null
 fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc ChangeLog WhatsNew BUGS TODO README
+%doc doc ChangeLog WhatsNew BUGS TODO README bin-ChangeLog
 %attr(755,root,root) %{_bindir}/*
-%dir %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/VERSION
-#%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/bin
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/common
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/contrib
-#%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/doc
-#%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/docsrc
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/dtds
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/frames
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/html
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/images
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/lib
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/olink
-%{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/print
+%dir %{_datadir}/sgml/docbook/dsssl-stylesheets
+%{_datadir}/sgml/docbook/dsssl-stylesheets/VERSION
+#%{_datadir}/sgml/docbook/dsssl-stylesheets/bin
+%{_datadir}/sgml/docbook/dsssl-stylesheets/catalog
+%{_datadir}/sgml/docbook/dsssl-stylesheets/common
+%{_datadir}/sgml/docbook/dsssl-stylesheets/contrib
+#%{_datadir}/sgml/docbook/dsssl-stylesheets/doc
+#%{_datadir}/sgml/docbook/dsssl-stylesheets/docsrc
+%{_datadir}/sgml/docbook/dsssl-stylesheets/dtds
+%{_datadir}/sgml/docbook/dsssl-stylesheets/frames
+%{_datadir}/sgml/docbook/dsssl-stylesheets/html
+%{_datadir}/sgml/docbook/dsssl-stylesheets/images
+%{_datadir}/sgml/docbook/dsssl-stylesheets/lib
+%{_datadir}/sgml/docbook/dsssl-stylesheets/olink
+%{_datadir}/sgml/docbook/dsssl-stylesheets/print
