@@ -87,7 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/bin/install-catalog --add /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
-ln -sf dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
+ln -sfn dsssl-stylesheets-%{version} %{_datadir}/sgml/docbook/dsssl-stylesheets
 
 %postun
 /usr/bin/install-catalog --remove /etc/sgml/dsssl-stylesheets-%{version}.cat %{_datadir}/sgml/docbook/dsssl-stylesheets-%{version}/catalog > /dev/null
