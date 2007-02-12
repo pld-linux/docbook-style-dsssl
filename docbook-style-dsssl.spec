@@ -1,9 +1,9 @@
 Summary:	Modular DocBook Stylesheets
-Summary(es.UTF-8):   Plantillas de estilo modulares de Norman Walsh para DocBook
-Summary(pl.UTF-8):   Arkusze stylistyczne DSSSL dla DocBook DTD
-Summary(pt_BR.UTF-8):   "stylesheets" modulares para o docbook, de Norman Walsh
-Summary(ru.UTF-8):   Модульные стилевые шаблоны для DocBook от Norman Walsh
-Summary(uk.UTF-8):   Модульні стильові шаблони для DocBook від Norman Walsh
+Summary(es.UTF-8):	Plantillas de estilo modulares de Norman Walsh para DocBook
+Summary(pl.UTF-8):	Arkusze stylistyczne DSSSL dla DocBook DTD
+Summary(pt_BR.UTF-8):	"stylesheets" modulares para o docbook, de Norman Walsh
+Summary(ru.UTF-8):	Модульные стилевые шаблоны для DocBook от Norman Walsh
+Summary(uk.UTF-8):	Модульні стильові шаблони для DocBook від Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.79
 Release:	1
