@@ -1,9 +1,9 @@
 Summary:	Modular DocBook Stylesheets
-Summary(es):	Plantillas de estilo modulares de Norman Walsh para DocBook
-Summary(pl):	Arkusze stylistyczne DSSSL dla DocBook DTD
-Summary(pt_BR):	"stylesheets" modulares para o docbook, de Norman Walsh
-Summary(ru):	Модульные стилевые шаблоны для DocBook от Norman Walsh
-Summary(uk):	Модульн╕ стильов╕ шаблони для DocBook в╕д Norman Walsh
+Summary(es.UTF-8):   Plantillas de estilo modulares de Norman Walsh para DocBook
+Summary(pl.UTF-8):   Arkusze stylistyczne DSSSL dla DocBook DTD
+Summary(pt_BR.UTF-8):   "stylesheets" modulares para o docbook, de Norman Walsh
+Summary(ru.UTF-8):   п°п╬п╢я┐п╩я▄п╫я▀п╣ я│я┌п╦п╩п╣п╡я▀п╣ я┬п╟п╠п╩п╬п╫я▀ п╢п╩я▐ DocBook п╬я┌ Norman Walsh
+Summary(uk.UTF-8):   п°п╬п╢я┐п╩я▄п╫я√ я│я┌п╦п╩я▄п╬п╡я√ я┬п╟п╠п╩п╬п╫п╦ п╢п╩я▐ DocBook п╡я√п╢ Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.79
 Release:	1
@@ -29,31 +29,31 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 DSSSL is a stylesheet language for both print and online rendering.
 There is DSSSL stylesheets for DocBook DTD.
 
-%description -l es
+%description -l es.UTF-8
 Plantillas de estilo DSSSL permiten convertir cualquier documento
 Docbook en otro formato impreso (por ejemplo, RTF o PostScript) o en
-lМnea (por ejemplo, HTML). иstos son altamente personalizables.
+lц╜nea (por ejemplo, HTML). ц┴stos son altamente personalizables.
 
-%description -l pl
-docbook-dsssl jest zbiorem arkuszy stylistycznych pozwalaj╠cych
-przeksztaЁciФ dokument napisany w DocBook DTD 3.0. na prezentacjЙ
-on-line (wykorzystuj╠c HTML) lub na drukowany dokument (wykorzystuj╠c
+%description -l pl.UTF-8
+docbook-dsssl jest zbiorem arkuszy stylistycznych pozwalajд┘cych
+przeksztaе┌ciд┤ dokument napisany w DocBook DTD 3.0. na prezentacjд≥
+on-line (wykorzystujд┘c HTML) lub na drukowany dokument (wykorzystujд┘c
 jadetex lub RTF).
 
-%description -l pt_BR
+%description -l pt_BR.UTF-8
 Estes stylesheets DSSSL permitem converter qualquer documento DocBook
-para outro formato imprimМvel (por exemplo, RTF ou PostScript) ou
-on-line (por exemplo, HTML). Eles sЦo altamente personalizАveis.
+para outro formato imprimц╜vel (por exemplo, RTF ou PostScript) ou
+on-line (por exemplo, HTML). Eles sцёo altamente personalizц║veis.
 
-%description -l ru
-Эти стилевые шаблоны DSSSL позволяют конвертировать любой DocBook
-документ в другой онлайновый формат (например, HTML) или формат для
-печати (например, RTF или PostScript).
+%description -l ru.UTF-8
+п╜я┌п╦ я│я┌п╦п╩п╣п╡я▀п╣ я┬п╟п╠п╩п╬п╫я▀ DSSSL п©п╬п╥п╡п╬п╩я▐я▌я┌ п╨п╬п╫п╡п╣я─я┌п╦я─п╬п╡п╟я┌я▄ п╩я▌п╠п╬п╧ DocBook
+п╢п╬п╨я┐п╪п╣п╫я┌ п╡ п╢я─я┐пЁп╬п╧ п╬п╫п╩п╟п╧п╫п╬п╡я▀п╧ я└п╬я─п╪п╟я┌ (п╫п╟п©я─п╦п╪п╣я─, HTML) п╦п╩п╦ я└п╬я─п╪п╟я┌ п╢п╩я▐
+п©п╣я┤п╟я┌п╦ (п╫п╟п©я─п╦п╪п╣я─, RTF п╦п╩п╦ PostScript).
 
-%description -l uk
-Ц╕ стильов╕ шаблони DSSSL дозволяють конвертувати будь-який DocBook
-документ в ╕нший онлайновий формат (наприклад, HTML) чи формат для
-друку (наприклад, RTF чи PostScript).
+%description -l uk.UTF-8
+п╕я√ я│я┌п╦п╩я▄п╬п╡я√ я┬п╟п╠п╩п╬п╫п╦ DSSSL п╢п╬п╥п╡п╬п╩я▐я▌я┌я▄ п╨п╬п╫п╡п╣я─я┌я┐п╡п╟я┌п╦ п╠я┐п╢я▄-я▐п╨п╦п╧ DocBook
+п╢п╬п╨я┐п╪п╣п╫я┌ п╡ я√п╫я┬п╦п╧ п╬п╫п╩п╟п╧п╫п╬п╡п╦п╧ я└п╬я─п╪п╟я┌ (п╫п╟п©я─п╦п╨п╩п╟п╢, HTML) я┤п╦ я└п╬я─п╪п╟я┌ п╢п╩я▐
+п╢я─я┐п╨я┐ (п╫п╟п©я─п╦п╨п╩п╟п╢, RTF я┤п╦ PostScript).
 
 %prep
 %setup -q -n docbook-dsssl-%{version} -a 2
