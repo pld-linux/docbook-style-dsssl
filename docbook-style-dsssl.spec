@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Модульные стилевые шаблоны для Doc
 Summary(uk.UTF-8):	Модульні стильові шаблони для DocBook від Norman Walsh
 Name:		docbook-style-dsssl
 Version:	1.79
-Release:	1
+Release:	2
 License:	(C) 1997, 1998 Norman Walsh (Free)
 Vendor:		Norman Walsh http://nwalsh.com/
 Group:		Applications/Publishing/SGML
